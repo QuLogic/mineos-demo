@@ -33,7 +33,7 @@ model=$1                # setup 1-D model name
 # check model name
 flg=0
 for f in \
-CPacific NRussia prem_noocean prem_noocean_na prem_ocean prem_noocean_1ln.txt
+CPacific NRussia prem_noocean prem_ocean
 do
   if test "$f" = $1; then
     flg=1
@@ -41,7 +41,7 @@ do
 done
 if test "$flg" = 0; then
   echo "Model name $1 is wrong, allowed names are:"
-  echo "CPacific NRussia prem_noocean prem_noocean_na prem_ocean prem_noocean_1ln.txt"
+  echo "CPacific NRussia prem_noocean prem_ocean"
   exit 1
 fi
 
