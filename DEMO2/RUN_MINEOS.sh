@@ -46,6 +46,15 @@ if test "$flg" = 0; then
 fi
 
 #=========================================================
+
+MINEOS=$(which minos_bran 2> /dev/null)
+if test "x$MINEOS" != "x"; then
+  MINEOS=$(dirname ${MINEOS})
+else
+  MINEOS="../.."
+fi
+
+#=========================================================
 # 1. run minos_bran program for fundamental S  mode,
 # where,  n=0, 0 < f <  0.2 Hz,
 #
@@ -56,7 +65,7 @@ if test "X$null" != X; then
   rm -f $null
 fi
 
-time minos_bran << EOF
+time ${MINEOS}/minos_bran << EOF
 ../models/${model}.txt
 ${model}_S
 e${model}_S
@@ -76,7 +85,7 @@ if test "X$null" != X; then
   rm -f $null
 fi
 
-time minos_bran << EOF
+time ${MINEOS}/minos_bran << EOF
 ../models/${model}.txt
 ${model}_T
 e${model}_T
@@ -93,7 +102,7 @@ if test -f test_S.eigen; then
   rm -rf test_S.*
 fi
 
-time eigcon << EOF
+time ${MINEOS}/eigcon << EOF
 3
 ../models/${model}.txt
 1000
@@ -109,7 +118,7 @@ if test -f test_T.eigen; then
   rm -rf test_T.*
 fi
 
-time eigcon << EOF
+time ${MINEOS}/eigcon << EOF
 2
 ../models/${model}.txt
 1000
@@ -125,7 +134,7 @@ if test -f green.wfdisc; then
   rm -rf green.*
 fi
 
-time green << EOF
+time ${MINEOS}/green << EOF
 short
 db_list
 china_cmt_event
@@ -145,7 +154,7 @@ if test -f Syndat.wfdisc; then
   rm -rf Syndat.*
 fi
 
-time syndat << EOF
+time ${MINEOS}/syndat << EOF
 china_cmt_event
 0
 green

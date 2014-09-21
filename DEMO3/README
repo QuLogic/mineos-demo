@@ -4,10 +4,11 @@ MINEOS DEMO run example
 This directory contains all necessary information to run a control test for
 the MINEOS package. To run the test, follow the instructions below.
 
- 1. Check that MINEOS binary programs are accessible via the PATH environment
-    variable:
-
-    $ which minos_bran
+ 1. If you are running the demo as a subdirectory of the mineos distribution,
+    then the MINEOS binary programs should be automatically detected.
+    Otherwise, you may set the MINEOS environment variable to point to the
+    directory containing the MINEOS programs. Alternatively, make the MINEOS
+    binary programs accessible via the PATH environment variable.
 
  2. Start main script RUN_MINEOS.sh with command
 

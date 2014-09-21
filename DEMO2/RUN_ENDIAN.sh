@@ -20,6 +20,15 @@ fi
 
 #=========================================================
 
+MINEOS=$(which minos_bran 2> /dev/null)
+if test "x$MINEOS" != "x"; then
+  MINEOS=$(dirname ${MINEOS})
+else
+  MINEOS="../.."
+fi
+
+#=========================================================
+
 big=`egrep -e"t4" $1.wfdisc | wc -l`
 low=`egrep -e"f4" $1.wfdisc | wc -l`
 if test $big != 0 && test $low != 0; then
@@ -32,11 +41,11 @@ if test $big != 0; then
   echo " BIG_ENDIAN ==> LOW_ENDIAN conversion"
   sed -e"s/t4/f4/" ../$1.wfdisc > tmp.$$
   mv tmp.$$ ../$1.wfdisc
-  endi 4 [wg].*
+  ${MINEOS}/endi 4 [wg].*
 else
   echo " LOW_ENDIAN ==> BIG_ENDIAN conversion"
   sed -e"s/f4/t4/" ../$1.wfdisc > tmp.$$
   mv tmp.$$ ../$1.wfdisc
-  endi 4 [wg].*
+  ${MINEOS}/endi 4 [wg].*
 fi
 cd ..
