@@ -1,12 +1,12 @@
 #!/bin/sh
 #
-# Example of the BIG_ENDIAN <===> LOW_ENDIAN conversation.
+# Example of the BIG_ENDIAN <===> LOW_ENDIAN conversion.
 #
-# Usage: RUN_ENDIAN.csh db_name
+# Usage: RUN_ENDIAN.sh db_name
 #
 #=========================================================
 if test "$#" != 1; then
-echo " Usage: RUN_ENDIAN.csh db_name"
+echo " Usage: RUN_ENDIAN.sh db_name"
 exit
 fi
 if test ! -f $1.wfdisc; then
@@ -23,19 +23,19 @@ big=`egrep -e"t4" $1.wfdisc | wc -l`
 low=`egrep -e"f4" $1.wfdisc | wc -l`
 if test $big != 0 ; then
 if test $low != 0; then
-echo ".wfdisc inclides BIG and LOW orders"
+echo ".wfdisc includes BIG and LOW orders"
 fi
 fi
 exit
 endif
 cd $1.wfdisc.dat
 if($big != 0) then
-echo " BIG_ENDIAN ==> LOW_ENDIAN conversation"
+echo " BIG_ENDIAN ==> LOW_ENDIAN conversion"
 sed -e"s/t4/f4/" ../$1.wfdisc > tmp.$$
 mv tmp.$$ ../$1.wfdisc
 endi 4 [wg].*
 else
-echo " LOW_ENDIAN ==> BIG_ENDIAN conversation"
+echo " LOW_ENDIAN ==> BIG_ENDIAN conversion"
 sed -e"s/f4/t4/" ../$1.wfdisc > tmp.$$
 mv tmp.$$ ../$1.wfdisc
 endi 4 [wg].*

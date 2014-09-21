@@ -2,11 +2,11 @@
 #
 # Example of the BIG_ENDIAN <===> LOW_ENDIAN conversion.
 #
-# Usage: RUN_ENDIAN.csh db_name
+# Usage: RUN_ENDIAN.sh db_name
 #
 #=========================================================
 if test "$#" != 1; then
-echo " Usage: RUN_ENDIAN.csh db_name"
+echo " Usage: RUN_ENDIAN.sh db_name"
 exit
 fi
 if test ! -f $1.wfdisc; then
@@ -22,7 +22,7 @@ big=`egrep -e"t4" $1.wfdisc | wc -l`
 low=`egrep -e"f4" $1.wfdisc | wc -l`
 if test $big != 0 ; then
 if test $low != 0; then
-echo ".wfdisc inclides BIG and LOW orders"
+echo ".wfdisc includes BIG and LOW orders"
 exit
 fi
 fi
