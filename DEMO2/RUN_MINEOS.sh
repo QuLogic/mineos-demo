@@ -24,7 +24,7 @@ $7,$8,$9,t,1,-1,$2*1000+$3,-1,-1,-1,-1,-1,"-",-999.0000,"-",-999.0,-1,-999.0,-1,
 #
 if test "$#" != 1; then
 echo " Usage: RUN_MINEOS.sh model_name"
-exit
+exit 1
 fi
 model=$1                # setup 1-D model name
 # check model name
@@ -39,7 +39,7 @@ done
 if test "$flg" = 0; then
 echo "Model name $1 is wrong, allowed names are:"
 echo "CPacific NRussia prem_noocean prem_noocean_na prem_ocean prem_noocean_1ln.txt"
-exit
+exit 1
 fi
 #=========================================================
 # 1. run minos_bran program for fundamental S  mode,
@@ -140,4 +140,3 @@ EOF
 cp -p short.site Syndat.site
 cp -p short.sitechan Syndat.sitechan
 creat_origin china_cmt_event Syndat
-exit
