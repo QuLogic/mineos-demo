@@ -13,7 +13,6 @@ if test ! -f $1.wfdisc; then
 echo " .wfdisc relation $1.wfdisc does not exist"
 exit
 fi
-exit
 if test ! -d $1.wfdisc.dat; then
 echo " Directory $1.wfdisc.dat does not exist"
 exit
@@ -21,15 +20,12 @@ fi
 #
 big=`egrep -e"t4" $1.wfdisc | wc -l`
 low=`egrep -e"f4" $1.wfdisc | wc -l`
-if test $big != 0 ; then
-if test $low != 0; then
+if test $big != 0 && test $low != 0; then
 echo ".wfdisc includes BIG and LOW orders"
-fi
-fi
 exit
-endif
+fi
 cd $1.wfdisc.dat
-if($big != 0) then
+if test $big != 0; then
 echo " BIG_ENDIAN ==> LOW_ENDIAN conversion"
 sed -e"s/t4/f4/" ../$1.wfdisc > tmp.$$
 mv tmp.$$ ../$1.wfdisc
@@ -39,6 +35,6 @@ echo " LOW_ENDIAN ==> BIG_ENDIAN conversion"
 sed -e"s/f4/t4/" ../$1.wfdisc > tmp.$$
 mv tmp.$$ ../$1.wfdisc
 endi 4 [wg].*
-endif
+fi
 cd ..
 exit

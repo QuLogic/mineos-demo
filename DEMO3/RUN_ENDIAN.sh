@@ -20,11 +20,9 @@ fi
 #
 big=`egrep -e"t4" $1.wfdisc | wc -l`
 low=`egrep -e"f4" $1.wfdisc | wc -l`
-if test $big != 0 ; then
-if test $low != 0; then
+if test $big != 0 && test $low != 0; then
 echo ".wfdisc includes BIG and LOW orders"
 exit
-fi
 fi
 cd $1.wfdisc.dat
 if test $big != 0; then
