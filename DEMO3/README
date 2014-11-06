@@ -47,7 +47,7 @@ the MINEOS package. To run the test, follow the instructions below.
 
     Note that ANTELOPE always requires BIG_ENDIAN waveform data order. So, if
     test is running on a PC/Linux platform you need to convert waveforms from
-    LOW_ENDIAN bytes order to BIG_ENDIAN in the following way:
+    LITTLE_ENDIAN bytes order to BIG_ENDIAN in the following way:
 
     $ ./RUN_ENDIAN.sh Syndat
     $ ./RUN_ENDIAN.sh green

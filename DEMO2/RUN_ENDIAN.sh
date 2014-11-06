@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Example of the BIG_ENDIAN <===> LOW_ENDIAN conversion.
+# Example of the BIG_ENDIAN <===> LITTLE_ENDIAN conversion.
 #
 # Usage: RUN_ENDIAN.sh db_name
 #
@@ -38,12 +38,12 @@ fi
 
 cd $1.wfdisc.dat
 if test $big != 0; then
-  echo " BIG_ENDIAN ==> LOW_ENDIAN conversion"
+  echo " BIG_ENDIAN ==> LITLE_ENDIAN conversion"
   sed -e"s/t4/f4/" ../$1.wfdisc > tmp.$$
   mv tmp.$$ ../$1.wfdisc
   ${MINEOS}/endi 4 [wg].*
 else
-  echo " LOW_ENDIAN ==> BIG_ENDIAN conversion"
+  echo " LITTLE_ENDIAN ==> BIG_ENDIAN conversion"
   sed -e"s/f4/t4/" ../$1.wfdisc > tmp.$$
   mv tmp.$$ ../$1.wfdisc
   ${MINEOS}/endi 4 [wg].*
